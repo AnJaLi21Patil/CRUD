@@ -29,29 +29,70 @@ from .models import Department
 #         fields = ['id', 'first_name', 'last_name','dept', 'department', 'role',
 #                   'salary', 'bonus', 'phone', 'hire_date']
 
-from rest_framework import serializers
-from .models import Employee
+# from rest_framework import serializers
+# from .models import Employee
+
+# from rest_framework import serializers
+# from .models import Employee
+
+# class EmployeeSerializer(serializers.ModelSerializer):
+#     # For display in GET responses
+#     department = serializers.CharField(source='dept.name', read_only=True)
+#     role_name = serializers.CharField(source='role.name', read_only=True)
+
+#     class Meta:
+#         model = Employee
+#         # Include dept and role for POST, but department and role_name for display
+#         fields = ['id', 'first_name', 'last_name', 'department', 'role_name',
+#                   'salary', 'bonus', 'phone', 'hire_date', 'dept', 'role']
+
+# class RoleSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Role
+#         fields= '__all__'
+
+# class DepartmentSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Department
+#         fields= '__all__'
+
+
 
 from rest_framework import serializers
-from .models import Employee
-
-class EmployeeSerializer(serializers.ModelSerializer):
-    # For display in GET responses
-    department = serializers.CharField(source='dept.name', read_only=True)
-    role_name = serializers.CharField(source='role.name', read_only=True)
-
-    class Meta:
-        model = Employee
-        # Include dept and role for POST, but department and role_name for display
-        fields = ['id', 'first_name', 'last_name', 'department', 'role_name',
-                  'salary', 'bonus', 'phone', 'hire_date', 'dept', 'role']
-
-class RoleSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Role
-        fields= '__all__'
+from .models import Employee, Department, Role
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
-        fields= '__all__'
+        fields = ['id', 'name', 'location']
+
+
+class RoleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Role
+        fields = ['id', 'name']
+
+
+class EmployeeSerializer(serializers.ModelSerializer):
+    # accept dept & role as IDs when creating/updating, but expose names for read
+    dept = serializers.PrimaryKeyRelatedField(queryset=Department.objects.all())
+    role = serializers.PrimaryKeyRelatedField(queryset=Role.objects.all())
+    dept_name = serializers.CharField(source='dept.name', read_only=True)
+    role_name = serializers.CharField(source='role.name', read_only=True)
+    user_id = serializers.IntegerField(source='user.id', read_only=True)
+
+    class Meta:
+        model = Employee
+        fields = [
+            'id', 'user_id', 'first_name', 'last_name',
+            'dept', 'dept_name', 'salary', 'bonus', 'role', 'role_name',
+            'phone', 'hire_date'
+        ]
+# class EmployeeSerializer(serializers.ModelSerializer):
+#     department_name = serializers.CharField(source='dept.name', read_only=True)
+#     role_name = serializers.CharField(source='role.name', read_only=True)
+
+#     class Meta:
+#         model = Employee
+#         fields = ['id', 'first_name', 'last_name', 'salary', 'bonus', 'phone', 'hire_date', 
+#                   'department_name', 'role_name']
