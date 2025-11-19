@@ -352,8 +352,8 @@ async function loadEmployees(filters = {}) {
                 tr.dataset.empId = emp.id;
 
                 tr.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${emp.first_name}</td>
+                <td>${index + 1}</td>
+                  <td>${emp.first_name}</td>
                     <td>${emp.last_name}</td>
                     <td>${emp.dept_name || emp.department}</td>
                     <td>${emp.role_name || emp.role}</td>
