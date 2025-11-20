@@ -242,7 +242,6 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 # ------------------- AUTH APIs -------------------
 
 @api_view(['POST'])
-# @permission_classes([AllowAny])
 @permission_classes([AllowAny])
 def register_user(request):
     username = request.data.get('username')
@@ -277,4 +276,4 @@ def login_user(request):
         'access': str(refresh.access_token),
         'refresh': str(refresh),
         'username': user.username,
-    }, status=status.HTTP_200_OK)
+    }, status= status.HTTP_200_OK)
