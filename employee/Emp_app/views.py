@@ -242,6 +242,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 # ------------------- AUTH APIs -------------------
 
 @api_view(['POST'])
+# @permission_classes([AllowAny])
 @permission_classes([AllowAny])
 def register_user(request):
     username = request.data.get('username')
