@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'Emp_app',  # Make sure this matches your app folder name exactly
+    # 'Emp_app',  # Make sure this matches your app folder name exactly
+    'Emp_app' ,
     'django_extensions',        # 👈 add this line
     'corsheaders',   # <-- Add this
 
