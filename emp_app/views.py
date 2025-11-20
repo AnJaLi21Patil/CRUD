@@ -114,7 +114,7 @@ def remove_emp(request, emp_id):
 def filter_emp(request):
     if "user" not in request.session:
         return redirect("login")
-    emps = []
+    emps= []
     if request.method == "POST":
         search = request.POST.get("name", "")
         try:
