@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'rest_framwork',
     'Emp_app' ,
     'django_extensions',        # 👈 add this line
     'corsheaders',   # <-- Add this
