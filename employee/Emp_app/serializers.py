@@ -74,7 +74,6 @@ class RoleSerializer(serializers.ModelSerializer):
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
-    # accept dept & role as IDs when creating/updating, but expose names for read
     dept = serializers.PrimaryKeyRelatedField(queryset=Department.objects.all())
     role = serializers.PrimaryKeyRelatedField(queryset=Role.objects.all())
     dept_name = serializers.CharField(source='dept.name', read_only=True)
