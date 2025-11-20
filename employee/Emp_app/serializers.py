@@ -58,8 +58,8 @@ from .models import Department
 
 
 
-from rest_framework import serializers
 from .models import Employee, Department, Role
+from rest_framework import serializers
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
