@@ -174,10 +174,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// YE SCRIPT SABSE UPAR HAI — 100% GUARANTEED FIX
 const API_BASE = "http://127.0.0.1:8000/api/";
+{% comment %} const API_BASE = "https://blue-dog.loca.lt/"; {% endcomment %}
 
-// SABSE PEHLE TOKEN CHECK — AGAR GALAT HAI TO TURANT LOGIN PE BHEJEGA
 (async () => {
     const access = localStorage.getItem('accessToken');
     const refresh = localStorage.getItem('refreshToken');

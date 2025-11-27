@@ -97,6 +97,7 @@
 
 <script>
 const API_BASE = "http://127.0.0.1:8000/api/";
+{% comment %} const API_BASE = "https://blue-dog.loca.lt/"; {% endcomment %}
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -126,7 +127,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             // Save JWT tokens and username
             localStorage.setItem("accessToken", data.access);
             localStorage.setItem("refreshToken", data.refresh);
-           // localStorage.setItem("username", data.username || username);
+            localStorage.setItem("username", data.username || username);
 
             alert("✅ Login successful!");
             // Redirect to add employee page
